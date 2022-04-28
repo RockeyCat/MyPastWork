@@ -1,0 +1,7 @@
+aws_access_key = ""
+aws_secret_key = ""
+region = "ap-south-1"
+ssh_key_name = "ec2_key"
+private_key_path = "ec2_key.pem"
+product = "sales"
+environment = "prod"

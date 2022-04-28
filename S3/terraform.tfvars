@@ -1,0 +1,5 @@
+aws_access_key = ""
+aws_secret_key = ""
+region = "ap-south-1"
+ssh_key_name = "tf1_key"
+private_key_path = "tf1_key.pem"
