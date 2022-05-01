@@ -375,7 +375,7 @@ resource "aws_lb_listener_rule" "static" {
 
 output "private_ip" {
   value = zipmap(aws_instance.app-vpc-ec2-instance.*.tags.Name, aws_instance.app-vpc-ec2-instance.*.private_ip)
-
+# mapping the keys with their values using zipmap function
 }
 output "public_ip" {
   value = zipmap(aws_instance.app-vpc-ec2-instance.*.tags.Name, aws_eip.eip.*.public_ip)
