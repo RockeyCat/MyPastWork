@@ -16,19 +16,6 @@ variable "region" {
   default = "us-east-1"
 }
 
-
-#####################################
-#       Key Path
-#####################################
-
-
-variable "private_key_path" {
-  description = "Pem key for ec2 instance"
-  type        = string
-  default     = "appkey.pem"
-}
-
-
 #####################################
 #       CustomVPC Variable
 #####################################
@@ -260,14 +247,15 @@ resource "null_resource" "null" {
       "sh  /home/ec2-user/userdata.sh",
     ]
     on_failure = continue
-  }
+  
 
   connection {
     type        = "ssh"
     user        = "ec2-user"
     port        = "22"
     host        = element(aws_eip.eip.*.public_ip, count.index)
-    private_key = file(var.private_key_path)
+    private_key = file("./mykey.pem")
+  }
   }
 }
 #######################################
