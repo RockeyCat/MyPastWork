@@ -312,6 +312,7 @@ resource "aws_lb_target_group" "tg" {
 #######################################
 resource "aws_alb_target_group_attachment" "tg-a" {
   count            = length(aws_instance.app-vpc-ec2-instance.*.id) == 3 ? 3 : 0
+  # Condition Variable Condition ? true_value : false_value
   target_group_arn = aws_lb_target_group.tg.arn
   target_id        = element(aws_instance.app-vpc-ec2-instance.*.id, count.index)
 }
