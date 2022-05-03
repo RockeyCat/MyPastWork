@@ -3,6 +3,11 @@ variable "region" {
   default = "ap-south-1"
 }
 
+###################
+#       Deafult VPC
+###################
+
+
 
 provider "aws" {
 shared_config_files = [ "C:\\Users\\HP\\.aws\\config" ]
