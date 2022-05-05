@@ -3,8 +3,8 @@ variable "aws_secret_key" {}
 variable "region" {}
 
 provider "aws" {
-  access_key = var.aws_access_key
-  secret_key = var.aws_secret_key
+ shared_config_files = [ "C:\\Users\\HP\\.aws\\config" ]
+ shared_credentials_files = [ "C:\\Users\\HP\\.aws\\credentials" ]
   region = var.region
 }
 
