@@ -13,7 +13,7 @@
 
 variable "region" {
   type    = string
-  default = "us-east-1"
+  default = "ap-south-1ping "
 }
 
 #####################################
@@ -105,6 +105,7 @@ resource "aws_security_group" "app-vpc-ec2-sg" {
   name        = "app-vpc-ec2-sg"
   description = "Allow Inbound Traffic for Instance"
   vpc_id      = aws_vpc.app-vpc.id
+
 
   dynamic "ingress" {
     for_each = local.ingress_rules
