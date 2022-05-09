@@ -33,4 +33,5 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
-password.txt
+.terraform.*
+*.txt
