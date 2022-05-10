@@ -25,6 +25,21 @@ data "aws_availability_zones" "azs" {
   state = "available"
 }
 
+
+variable "node-policy" {
+  type        = list(any)
+  description = "Bundle of the Policies which need to be attached to the Node"
+  default     = ["AmazonEC2ContainerRegistryReadOnly", "AmazonEKS_CNI_Policy", "AmazonEKSWorkerNodePolicy", "AmazonSSMManagedInstanceCore"]
+}
+
+variable "cluster-policy" {
+  type        = list(any)
+  description = "Bundle of the Policies which need to be attached the Cluster"
+  default     = ["AmazonEKSServicePolicy", "AmazonEKSClusterPolicy"]
+}
+
+
+
 ##########VPC DEFINATION##################
 
 resource "aws_vpc" "eks-vpc" {
@@ -54,65 +69,6 @@ resource "aws_subnet" "public-subnet" {
 
 }
 
-/*
-##########Private Subnet  DEFINATION##################
-
-resource "aws_subnet" "private-subnet" {
-  vpc_id                                      = aws_vpc.eks-vpc.id
-  count                                       = var.eks-vpc == "10.0.0.0/16" ? 3 : 0
-  cidr_block                                  = cidrsubnet(var.eks-vpc, 8, count.index + 3)
-  map_public_ip_on_launch                     = "true"
-  enable_resource_name_dns_a_record_on_launch = "true"
-  availability_zone                           = data.aws_availability_zones.azs.names[count.index]
-
-  tags = {
-    "Name" = "Private-Subnet-${count.index + 1}"
-  }
-
-}
-
-
-
-resource "aws_eip" "eip" {
-  count = var.eks-vpc == "10.0.0.0/16" ? 3 : 0
-  vpc   = true
-}
-
-
-resource "aws_nat_gateway" "eks-vpc-n-gw" {
-  count         = var.eks-vpc == "10.0.0.0/16" ? 3 : 0
-  allocation_id = element(aws_eip.eip.*.id, count.index)
-  subnet_id     = element(aws_subnet.public-subnet.*.id, count.index)
-
-  tags = {
-    "Name" = "eks-vpc-n-gw-${count.index + 1}"
-  }
-}
-
-
-resource "aws_route" "eks-vpc-r-private" {
-  count                  = var.eks-vpc == "10.0.0.0/16" ? 3 : 0
-  route_table_id         = aws_route_table.eks-vpc-rt-private.id
-  gateway_id             = element(aws_nat_gateway.eks-vpc-n-gw.*.id, count.index)
-  destination_cidr_block = element(aws_subnet.private-subnet.*.cidr_block, count.index)
-}
-
-
-resource "aws_route_table" "eks-vpc-rt-private" {
-  vpc_id = aws_vpc.eks-vpc.id
-
-  tags = {
-    "Name" = "eks-vpc-rt-private"
-  }
-}
-
-
-resource "aws_route_table_association" "eks-vpc-rt-a-private" {
-  count          = var.eks-vpc == 3 ? 3 : 0
-  route_table_id = aws_route_table.eks-vpc-rt-private.id
-  subnet_id      = element(aws_subnet.private-subnet.*.id, count.index)
-}
-*/
 
 resource "aws_internet_gateway" "eks-vpc-ig" {
   vpc_id = aws_vpc.eks-vpc.id
@@ -166,34 +122,34 @@ data "aws_ami" "managed_ami" {
 
 locals {
   ingress_rules = [{
-      name = "HTTPS"
-      port = 443
-      description = "Secured Port Only"
-  },
-  {
-      name = "HTTP"
-      port = 80
+    name        = "HTTPS"
+    port        = 443
+    description = "Secured Port Only"
+    },
+    {
+      name        = "HTTP"
+      port        = 80
       description = "UnSecured Port Only"
-  },
-  {
-      name = "SSH"
-      port = 22
+    },
+    {
+      name        = "SSH"
+      port        = 22
       description = "SSH Port Only"
-  }
+    }
   ]
 }
 
 
 resource "aws_security_group" "eks-vpc-sg" {
-  vpc_id = aws_vpc.eks-vpc.id
-  name = "eks-vpc-sg"
+  vpc_id      = aws_vpc.eks-vpc.id
+  name        = "eks-vpc-sg"
   description = "Cluster-SG"
-  
 
-  dynamic ingress {
-      for_each = local.ingress_rules
-      content {
-            description = ingress.value.description
+
+  dynamic "ingress" {
+    for_each = local.ingress_rules
+    content {
+      description = ingress.value.description
       from_port   = ingress.value.port
       to_port     = ingress.value.port
       protocol    = "tcp"
@@ -219,7 +175,7 @@ resource "aws_security_group" "eks-vpc-sg" {
 
 resource "aws_iam_role" "eks-role" {
   name = "eks-role"
-  
+
   assume_role_policy = <<POLICY
 {
   "Version": "2012-10-17",
@@ -237,50 +193,19 @@ POLICY
 }
 
 
-
-
-data "aws_iam_policy" "AmazonEKSServicePolicy" {
-  arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
-}
-
-data "aws_iam_policy" "AmazonEKSClusterPolicy" {
-  arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-}
-
-data "aws_iam_policy" "AmazonSSMManagedInstanceCore" {
-  arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
-}
-
-data "aws_iam_policy" "AmazonEKSWorkerNodePolicy" {
-  arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
-}
-
-data "aws_iam_policy" "AmazonEKS_CNI_Policy" {
-  arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
-}
-
-data "aws_iam_policy" "AmazonEC2ContainerRegistryReadOnly" {
-  arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
-}
-
-resource "aws_iam_role_policy_attachment" "AmazonEKSClusterPolicy" {
-  role = aws_iam_role.eks-role.name
-  policy_arn = data.aws_iam_policy.AmazonEKSClusterPolicy.arn
-
-}
-
-resource "aws_iam_role_policy_attachment" "AmazonEKSServicePolicy" {
-  role = aws_iam_role.eks-role.name
-  policy_arn = data.aws_iam_policy.AmazonEKSServicePolicy.arn
+resource "aws_iam_role_policy_attachment" "AmazonEKSPolicies" {
+  role       = aws_iam_role.eks-role.name
+  count      = length(var.cluster-policy)
+  policy_arn = "arn:aws:iam::aws:policy/${var.cluster-policy[count.index]}"
 
 }
 
 resource "aws_eks_cluster" "eks-cluster" {
-  name = "eks-cluster"
+  name     = "eks-cluster"
   role_arn = aws_iam_role.eks-role.arn
   vpc_config {
-    
-    subnet_ids = aws_subnet.public-subnet[*].id
+
+    subnet_ids         = aws_subnet.public-subnet[*].id
     security_group_ids = [aws_security_group.eks-vpc-sg.id]
   }
 
@@ -291,7 +216,7 @@ resource "aws_eks_cluster" "eks-cluster" {
 
 
 resource "aws_iam_role" "eks-nodes-role" {
-  name = "Eks-Cluster-nodes"
+  name               = "Eks-Cluster-nodes"
   assume_role_policy = <<POLICY
 {
   "Version": "2012-10-17",
@@ -310,41 +235,29 @@ POLICY
 
 
 
-resource "aws_iam_role_policy_attachment" "AmazonSSMManagedInstanceCore" {
-  role = aws_iam_role.eks-nodes-role.name
-  policy_arn = data.aws_iam_policy.AmazonSSMManagedInstanceCore.arn
-}
-resource "aws_iam_role_policy_attachment" "AmazonEKSWorkerNodePolicy" {
-  role = aws_iam_role.eks-nodes-role.name
-  policy_arn = data.aws_iam_policy.AmazonEKSWorkerNodePolicy.arn
-}
-resource "aws_iam_role_policy_attachment" "AmazonEC2ContainerRegistryReadOnly" {
-  role = aws_iam_role.eks-nodes-role.name
-  policy_arn = data.aws_iam_policy.AmazonEC2ContainerRegistryReadOnly.arn
-}
-resource "aws_iam_role_policy_attachment" "AmazonEKS_CNI_Policy" {
-  role = aws_iam_role.eks-nodes-role.name
-  policy_arn = data.aws_iam_policy.AmazonEKS_CNI_Policy.arn
+resource "aws_iam_role_policy_attachment" "eks-ng-policy-attachment" {
+  role       = aws_iam_role.eks-nodes-role.name
+  count      = length(var.node-policy)
+  policy_arn = "arn:aws:iam::aws:policy/${var.node-policy[count.index]}"
 }
 
 
 resource "aws_eks_node_group" "eks-node-group" {
-  cluster_name = aws_eks_cluster.eks-cluster.name
+  cluster_name    = aws_eks_cluster.eks-cluster.name
   node_group_name = "eks-cluster-ng"
-  node_role_arn = aws_iam_role.eks-nodes-role.arn
-  subnet_ids = aws_subnet.public-subnet[*].id
+  node_role_arn   = aws_iam_role.eks-nodes-role.arn
+  subnet_ids      = aws_subnet.public-subnet[*].id
 
   scaling_config {
-    desired_size = 1
-    max_size = 1
-    min_size = 1
+    desired_size = 2
+    max_size     = 3
+    min_size     = 2
   }
 
 
   depends_on = [
-    aws_iam_role_policy_attachment.AmazonEKSWorkerNodePolicy,
-    aws_iam_role_policy_attachment.AmazonEKS_CNI_Policy,
-    aws_iam_role_policy_attachment.AmazonEC2ContainerRegistryReadOnly
+    aws_iam_role_policy_attachment.eks-ng-policy-attachment
+    
   ]
 }
 
