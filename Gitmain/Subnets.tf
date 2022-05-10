@@ -58,7 +58,7 @@ resource "aws_subnet" "public-subnet" {
 resource "aws_subnet" "private-subnet" {
   vpc_id                                      = aws_vpc.eks-vpc.id
   count                                       = var.eks-vpc == "10.0.0.0/16" ? 3 : 0
-  cidr_block                                  = cidrsubnet(var.eks-vpc, 8, count.index + 3)
+  cidr_block                                  = cidrsubnet(var.eks-vpc, 8, count.index+3)
   map_public_ip_on_launch                     = "true"
   enable_resource_name_dns_a_record_on_launch = "true"
   availability_zone                           = data.aws_availability_zones.azs.names[count.index]
