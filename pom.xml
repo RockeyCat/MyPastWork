@@ -5,7 +5,8 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
   
   <modelVersion>4.0.0</modelVersion>  
   <groupId>com.javatpoint.application1</groupId>  
-  <artifactId>my-app</artifactId>  
-  <version>1</version>  
+  <artifactId>TomcatMavenApp</artifactId>  
+  <version>V.1</version>
+  <packaging>war</packaging>  
   
 </project>  
