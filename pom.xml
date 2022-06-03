@@ -7,17 +7,4 @@ http://maven.apache.org/maven-v4_0_0.xsd">
   <artifactId>maven-war-plugin</artifactId>  
   <packaging>war</packaging>  
   <version>1.0</version>
-  <plugin>
-    <artifactId>maven-war-plugin</artifactId>
-    <configuration>
-        <attachClasses>true</attachClasses>
-        <webXml>target/web.xml</webXml>
-        <webResources>
-            <resource>
-                <directory>/opt/apache-tomcat-9.0.63/webapps</directory>
-                <filtering>true</filtering>
-            </resource>
-        </webResources>
-    </configuration>
-</plugin>  
 </project>  
