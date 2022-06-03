@@ -4,7 +4,12 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 http://maven.apache.org/maven-v4_0_0.xsd">  
   <modelVersion>4.0.0</modelVersion>  
   <groupId>com.javatpoint</groupId>  
-  <artifactId>maven-war-plugin</artifactId>  
+  <artifactId>myapp</artifactId>  
   <packaging>war</packaging>  
-  <version>1.0</version>
+  <version>3.0</version>
+  <plugin>
+    <artifactId>maven-war-plugin</artifactId>
+    <version>3.0.0</version>
+  </plugin>
+
 </project>  
