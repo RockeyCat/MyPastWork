@@ -4,20 +4,20 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 http://maven.apache.org/maven-v4_0_0.xsd">  
   <modelVersion>4.0.0</modelVersion>  
   <groupId>com.javatpoint</groupId>  
-  <artifactId>CubeGeneratorWeb</artifactId>  
+  <artifactId>maven-war-plugin</artifactId>  
   <packaging>war</packaging>  
-  <version>1.0-SNAPSHOT</version>  
-  <name>CubeGeneratorWeb Maven Webapp</name>  
-  <url>http://maven.apache.org</url>  
-  <dependencies>  
-    <dependency>  
-      <groupId>junit</groupId>  
-      <artifactId>junit</artifactId>  
-      <version>3.8.1</version>  
-      <scope>test</scope>  
-    </dependency>  
-  </dependencies>  
-  <build>  
-    <finalName>CubeGeneratorWeb</finalName>  
-  </build>  
+  <version>1.0</version>
+  <plugin>
+    <artifactId>maven-war-plugin</artifactId>
+    <configuration>
+        <attachClasses>true</attachClasses>
+        <webXml>target/web.xml</webXml>
+        <webResources>
+            <resource>
+                <directory>/opt/apache-tomcat-9.0.63/webapps</directory>
+                <filtering>true</filtering>
+            </resource>
+        </webResources>
+    </configuration>
+</plugin>  
 </project>  
