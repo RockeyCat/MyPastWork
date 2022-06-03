@@ -7,9 +7,5 @@ http://maven.apache.org/maven-v4_0_0.xsd">
   <artifactId>myapp</artifactId>  
   <packaging>war</packaging>  
   <version>3.0</version>
-  <plugin>
-    <artifactId>maven-war-plugin</artifactId>
-    <version>3.0.0</version>
-  </plugin>
 
 </project>  
