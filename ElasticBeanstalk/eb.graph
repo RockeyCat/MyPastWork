@@ -1,0 +1,28 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_elastic_beanstalk_application.ebs-a-poc (expand)" [label = "aws_elastic_beanstalk_application.ebs-a-poc", shape = "box"]
+		"[root] aws_elastic_beanstalk_application_version.ebs-a-poc-v (expand)" [label = "aws_elastic_beanstalk_application_version.ebs-a-poc-v", shape = "box"]
+		"[root] aws_elastic_beanstalk_environment.ebs-a-poc-e (expand)" [label = "aws_elastic_beanstalk_environment.ebs-a-poc-e", shape = "box"]
+		"[root] data.aws_s3_bucket.av-aws-cicd-s3-bucket (expand)" [label = "data.aws_s3_bucket.av-aws-cicd-s3-bucket", shape = "box"]
+		"[root] output.app_version" [label = "output.app_version", shape = "note"]
+		"[root] output.env_name" [label = "output.env_name", shape = "note"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] var.region" [label = "var.region", shape = "note"]
+		"[root] aws_elastic_beanstalk_application.ebs-a-poc (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_elastic_beanstalk_application_version.ebs-a-poc-v (expand)" -> "[root] aws_elastic_beanstalk_application.ebs-a-poc (expand)"
+		"[root] aws_elastic_beanstalk_application_version.ebs-a-poc-v (expand)" -> "[root] data.aws_s3_bucket.av-aws-cicd-s3-bucket (expand)"
+		"[root] aws_elastic_beanstalk_environment.ebs-a-poc-e (expand)" -> "[root] aws_elastic_beanstalk_application.ebs-a-poc (expand)"
+		"[root] data.aws_s3_bucket.av-aws-cicd-s3-bucket (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] output.app_version" -> "[root] aws_elastic_beanstalk_application.ebs-a-poc (expand)"
+		"[root] output.env_name" -> "[root] aws_elastic_beanstalk_environment.ebs-a-poc-e (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_elastic_beanstalk_application_version.ebs-a-poc-v (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_elastic_beanstalk_environment.ebs-a-poc-e (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" -> "[root] var.region"
+		"[root] root" -> "[root] output.app_version"
+		"[root] root" -> "[root] output.env_name"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+	}
+}
+
