@@ -1,0 +1,43 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_cloudfront_distribution.s3_distribution (expand)" [label = "aws_cloudfront_distribution.s3_distribution", shape = "box"]
+		"[root] aws_s3_bucket.prod_website (expand)" [label = "aws_s3_bucket.prod_website", shape = "box"]
+		"[root] aws_s3_bucket_policy.prod_website (expand)" [label = "aws_s3_bucket_policy.prod_website", shape = "box"]
+		"[root] output.s3_bucket_arn" [label = "output.s3_bucket_arn", shape = "note"]
+		"[root] output.s3_bucket_domain_name" [label = "output.s3_bucket_domain_name", shape = "note"]
+		"[root] output.s3_bucket_id" [label = "output.s3_bucket_id", shape = "note"]
+		"[root] output.s3_bucket_region" [label = "output.s3_bucket_region", shape = "note"]
+		"[root] output.s3_bucket_website_domain" [label = "output.s3_bucket_website_domain", shape = "note"]
+		"[root] output.s3_bucket_website_endpoint" [label = "output.s3_bucket_website_endpoint", shape = "note"]
+		"[root] output.s3_hosted_zone_id" [label = "output.s3_hosted_zone_id", shape = "note"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] var.bucket_prefix" [label = "var.bucket_prefix", shape = "note"]
+		"[root] var.region" [label = "var.region", shape = "note"]
+		"[root] aws_cloudfront_distribution.s3_distribution (expand)" -> "[root] aws_s3_bucket.prod_website (expand)"
+		"[root] aws_cloudfront_distribution.s3_distribution (expand)" -> "[root] local.s3_origin_id (expand)"
+		"[root] aws_s3_bucket.prod_website (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_s3_bucket.prod_website (expand)" -> "[root] var.bucket_prefix"
+		"[root] aws_s3_bucket_policy.prod_website (expand)" -> "[root] aws_s3_bucket.prod_website (expand)"
+		"[root] output.s3_bucket_arn" -> "[root] aws_s3_bucket.prod_website (expand)"
+		"[root] output.s3_bucket_domain_name" -> "[root] aws_s3_bucket.prod_website (expand)"
+		"[root] output.s3_bucket_id" -> "[root] aws_s3_bucket.prod_website (expand)"
+		"[root] output.s3_bucket_region" -> "[root] aws_s3_bucket.prod_website (expand)"
+		"[root] output.s3_bucket_website_domain" -> "[root] aws_s3_bucket.prod_website (expand)"
+		"[root] output.s3_bucket_website_endpoint" -> "[root] aws_s3_bucket.prod_website (expand)"
+		"[root] output.s3_hosted_zone_id" -> "[root] aws_s3_bucket.prod_website (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_cloudfront_distribution.s3_distribution (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_s3_bucket_policy.prod_website (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" -> "[root] var.region"
+		"[root] root" -> "[root] output.s3_bucket_arn"
+		"[root] root" -> "[root] output.s3_bucket_domain_name"
+		"[root] root" -> "[root] output.s3_bucket_id"
+		"[root] root" -> "[root] output.s3_bucket_region"
+		"[root] root" -> "[root] output.s3_bucket_website_domain"
+		"[root] root" -> "[root] output.s3_bucket_website_endpoint"
+		"[root] root" -> "[root] output.s3_hosted_zone_id"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+	}
+}
+
