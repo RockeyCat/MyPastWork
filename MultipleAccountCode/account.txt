@@ -1,0 +1,10 @@
+provider "aws" {
+
+    /*default account access and secret keys will be fetched from config and credentials files stored locally*/
+}
+
+provider "aws" {
+    profile = "profile_name"
+    alias = "profile_name"
+    region = "any of your choice"
+}
