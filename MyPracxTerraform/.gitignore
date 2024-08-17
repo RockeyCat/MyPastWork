@@ -26,8 +26,12 @@ terraform.rc
 *.tfstate.lock.info
 
 # Ignore Terraform provider plugins directory
-.terraform/*
 .terraform/
+
+#Ignore Git as well
+
+.git
+.git/
 
 # Ignore generated plan files
 *.tfplan
