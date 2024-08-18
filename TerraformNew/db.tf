@@ -1,7 +1,4 @@
-locals {
-  raw_password     = file("password.txt")
-  decoded_password = base64decode(local.raw_password)
-}
+
 
 
 resource "aws_db_instance" "app-db" {
@@ -10,13 +7,12 @@ resource "aws_db_instance" "app-db" {
   engine_version         = "8.0"
   instance_class         = "db.t2.micro"
   multi_az               = true
-  username               = "master"
-  password               = local.decoded_password
+  username               = jsondecode(aws_secretsmanager_secret_version.sm-v.secret_string)["username"]
+  password               = jsondecode(aws_secretsmanager_secret_version.sm-v.secret_string)["password"]
   skip_final_snapshot    = true
   vpc_security_group_ids = [aws_security_group.app-vpc-ec2-sg.id, ]
-
-
-
+  iam_database_authentication_enabled = true
+  monitoring_role_arn = aws_iam_role.rds-monitoring-role.arn
 }
 
 

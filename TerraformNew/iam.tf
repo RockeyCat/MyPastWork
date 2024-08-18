@@ -179,3 +179,73 @@ data "aws_kms_alias" "s3kmskey" {
 output "default_kms_key_arn" {
   value = data.aws_kms_alias.s3kmskey.target_key_arn
 }
+
+
+
+data "aws_iam_policy_document" "sm-policy" {
+statement {
+  sid = "EnableAnotherAWSAccountToReadTheSecret"
+  effect = "Allow"
+  principals {
+    type = "AWS"
+    identifiers = [ "arn:aws:iam::*:root" ]
+
+  }
+
+  actions = ["secretmanager:GetSecretValue"]
+  resources = [ "*" ]
+
+}
+
+
+}
+
+
+
+resource "aws_iam_role" "rds-monitoring-role" {
+  name = "rds-monitoring-role"
+
+  assume_role_policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "rds.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+POLICY
+}
+
+
+resource "aws_iam_policy" "rds_monitoring_policy" {
+  name = "rds-monitoring-policy"
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    statement = [
+      {
+
+        Effect = "Allow"
+        Action = [
+          "logs: CreateLogGroup",
+          "logs:CreateLogStream",
+          "logs:PutLogEvents",
+          "s3:putObject"
+        ]
+        Resources = "*"
+      }
+    ]
+
+
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "rds_monitoring_role_policy_attachment" {
+  role = aws_iam_role.rds-monitoring-role.name
+  policy_arn = aws_iam_policy.rds_monitoring_policy.arn
+}

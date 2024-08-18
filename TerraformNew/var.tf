@@ -101,3 +101,14 @@ variable "FullRepositoryID" {
   type = string
   default = "Himanshuuj1997/Data-Science"
 }
+
+
+variable "db_username" {
+  type = string
+  default = "master"
+}
+
+variable "db_password" {
+  type = string
+  default = "Qwertyuiop@1234567890"
+}
