@@ -1,0 +1,353 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_api_gateway_integration.lambda_integration (expand)" [label = "aws_api_gateway_integration.lambda_integration", shape = "box"]
+		"[root] aws_api_gateway_method.app_method (expand)" [label = "aws_api_gateway_method.app_method", shape = "box"]
+		"[root] aws_api_gateway_resource.app_resource (expand)" [label = "aws_api_gateway_resource.app_resource", shape = "box"]
+		"[root] aws_api_gateway_rest_api.app-api (expand)" [label = "aws_api_gateway_rest_api.app-api", shape = "box"]
+		"[root] aws_autoscaling_group.aws-ec2-asg (expand)" [label = "aws_autoscaling_group.aws-ec2-asg", shape = "box"]
+		"[root] aws_autoscaling_policy.AWS-EC2-Scale-Down (expand)" [label = "aws_autoscaling_policy.AWS-EC2-Scale-Down", shape = "box"]
+		"[root] aws_autoscaling_policy.AWS-EC2-Scale-UP (expand)" [label = "aws_autoscaling_policy.AWS-EC2-Scale-UP", shape = "box"]
+		"[root] aws_cloudfront_distribution.cdn (expand)" [label = "aws_cloudfront_distribution.cdn", shape = "box"]
+		"[root] aws_cloudfront_origin_access_identity.oai (expand)" [label = "aws_cloudfront_origin_access_identity.oai", shape = "box"]
+		"[root] aws_cloudwatch_log_group.my-cluster (expand)" [label = "aws_cloudwatch_log_group.my-cluster", shape = "box"]
+		"[root] aws_codepipeline.app-codepipeline (expand)" [label = "aws_codepipeline.app-codepipeline", shape = "box"]
+		"[root] aws_codestarconnections_connection.app-codestar (expand)" [label = "aws_codestarconnections_connection.app-codestar", shape = "box"]
+		"[root] aws_db_instance.app-db (expand)" [label = "aws_db_instance.app-db", shape = "box"]
+		"[root] aws_db_subnet_group.app-db-sbg-g (expand)" [label = "aws_db_subnet_group.app-db-sbg-g", shape = "box"]
+		"[root] aws_dynamodb_table.app-table (expand)" [label = "aws_dynamodb_table.app-table", shape = "box"]
+		"[root] aws_eip.app-vpc-eip (expand)" [label = "aws_eip.app-vpc-eip", shape = "box"]
+		"[root] aws_eks_cluster.aws-cluster (expand)" [label = "aws_eks_cluster.aws-cluster", shape = "box"]
+		"[root] aws_eks_node_group.aws-cluster-node-group (expand)" [label = "aws_eks_node_group.aws-cluster-node-group", shape = "box"]
+		"[root] aws_elastic_beanstalk_application.app (expand)" [label = "aws_elastic_beanstalk_application.app", shape = "box"]
+		"[root] aws_elastic_beanstalk_application_version.app-version (expand)" [label = "aws_elastic_beanstalk_application_version.app-version", shape = "box"]
+		"[root] aws_elastic_beanstalk_configuration_template.app-template (expand)" [label = "aws_elastic_beanstalk_configuration_template.app-template", shape = "box"]
+		"[root] aws_elastic_beanstalk_environment.app-env (expand)" [label = "aws_elastic_beanstalk_environment.app-env", shape = "box"]
+		"[root] aws_iam_instance_profile.ssm-role (expand)" [label = "aws_iam_instance_profile.ssm-role", shape = "box"]
+		"[root] aws_iam_openid_connect_provider.eks-cluster (expand)" [label = "aws_iam_openid_connect_provider.eks-cluster", shape = "box"]
+		"[root] aws_iam_policy.lambda-dynamodb-policy (expand)" [label = "aws_iam_policy.lambda-dynamodb-policy", shape = "box"]
+		"[root] aws_iam_policy.rds_monitoring_policy (expand)" [label = "aws_iam_policy.rds_monitoring_policy", shape = "box"]
+		"[root] aws_iam_role.aws-cluster-role (expand)" [label = "aws_iam_role.aws-cluster-role", shape = "box"]
+		"[root] aws_iam_role.aws-lambda-role (expand)" [label = "aws_iam_role.aws-lambda-role", shape = "box"]
+		"[root] aws_iam_role.codepipeline-role (expand)" [label = "aws_iam_role.codepipeline-role", shape = "box"]
+		"[root] aws_iam_role.rds-monitoring-role (expand)" [label = "aws_iam_role.rds-monitoring-role", shape = "box"]
+		"[root] aws_iam_role.ssm-role (expand)" [label = "aws_iam_role.ssm-role", shape = "box"]
+		"[root] aws_iam_role_policy.codepipeline_policy (expand)" [label = "aws_iam_role_policy.codepipeline_policy", shape = "box"]
+		"[root] aws_iam_role_policy_attachment.beanstalk_ec2_container (expand)" [label = "aws_iam_role_policy_attachment.beanstalk_ec2_container", shape = "box"]
+		"[root] aws_iam_role_policy_attachment.beanstalk_ec2_web (expand)" [label = "aws_iam_role_policy_attachment.beanstalk_ec2_web", shape = "box"]
+		"[root] aws_iam_role_policy_attachment.beanstalk_ec2_worker (expand)" [label = "aws_iam_role_policy_attachment.beanstalk_ec2_worker", shape = "box"]
+		"[root] aws_iam_role_policy_attachment.beanstalk_service (expand)" [label = "aws_iam_role_policy_attachment.beanstalk_service", shape = "box"]
+		"[root] aws_iam_role_policy_attachment.beanstalk_service_health (expand)" [label = "aws_iam_role_policy_attachment.beanstalk_service_health", shape = "box"]
+		"[root] aws_iam_role_policy_attachment.cloudwatch_admin_policy (expand)" [label = "aws_iam_role_policy_attachment.cloudwatch_admin_policy", shape = "box"]
+		"[root] aws_iam_role_policy_attachment.cloudwatch_server_role_policy_attachment (expand)" [label = "aws_iam_role_policy_attachment.cloudwatch_server_role_policy_attachment", shape = "box"]
+		"[root] aws_iam_role_policy_attachment.eks_cni_policy_attachment (expand)" [label = "aws_iam_role_policy_attachment.eks_cni_policy_attachment", shape = "box"]
+		"[root] aws_iam_role_policy_attachment.eks_ec2_policy_attachment (expand)" [label = "aws_iam_role_policy_attachment.eks_ec2_policy_attachment", shape = "box"]
+		"[root] aws_iam_role_policy_attachment.eks_worker_node_policy_attachment (expand)" [label = "aws_iam_role_policy_attachment.eks_worker_node_policy_attachment", shape = "box"]
+		"[root] aws_iam_role_policy_attachment.lambda_dynamodb_policy_attachment (expand)" [label = "aws_iam_role_policy_attachment.lambda_dynamodb_policy_attachment", shape = "box"]
+		"[root] aws_iam_role_policy_attachment.my-cluster-awseksp (expand)" [label = "aws_iam_role_policy_attachment.my-cluster-awseksp", shape = "box"]
+		"[root] aws_iam_role_policy_attachment.my-cluster-awseksvpcrcp (expand)" [label = "aws_iam_role_policy_attachment.my-cluster-awseksvpcrcp", shape = "box"]
+		"[root] aws_iam_role_policy_attachment.name (expand)" [label = "aws_iam_role_policy_attachment.name", shape = "box"]
+		"[root] aws_iam_role_policy_attachment.rds_monitoring_role_policy_attachment (expand)" [label = "aws_iam_role_policy_attachment.rds_monitoring_role_policy_attachment", shape = "box"]
+		"[root] aws_instance.web-ec2 (expand)" [label = "aws_instance.web-ec2", shape = "box"]
+		"[root] aws_internet_gateway.app-vpc-ig (expand)" [label = "aws_internet_gateway.app-vpc-ig", shape = "box"]
+		"[root] aws_lambda_function.lambda-function (expand)" [label = "aws_lambda_function.lambda-function", shape = "box"]
+		"[root] aws_lambda_permission.api_gateway_invoke (expand)" [label = "aws_lambda_permission.api_gateway_invoke", shape = "box"]
+		"[root] aws_launch_configuration.name (expand)" [label = "aws_launch_configuration.name", shape = "box"]
+		"[root] aws_launch_template.aws-ec2-lt (expand)" [label = "aws_launch_template.aws-ec2-lt", shape = "box"]
+		"[root] aws_lb.app-alb (expand)" [label = "aws_lb.app-alb", shape = "box"]
+		"[root] aws_lb_listener.app-lb-l (expand)" [label = "aws_lb_listener.app-lb-l", shape = "box"]
+		"[root] aws_lb_target_group.app-alb-tg (expand)" [label = "aws_lb_target_group.app-alb-tg", shape = "box"]
+		"[root] aws_lb_target_group_attachment.app-alb-tg-a (expand)" [label = "aws_lb_target_group_attachment.app-alb-tg-a", shape = "box"]
+		"[root] aws_nat_gateway.app-vpc-nat-gw (expand)" [label = "aws_nat_gateway.app-vpc-nat-gw", shape = "box"]
+		"[root] aws_route.app-vpc-route-private (expand)" [label = "aws_route.app-vpc-route-private", shape = "box"]
+		"[root] aws_route.app-vpc-route-public (expand)" [label = "aws_route.app-vpc-route-public", shape = "box"]
+		"[root] aws_route_table.app-vpc-r-private (expand)" [label = "aws_route_table.app-vpc-r-private", shape = "box"]
+		"[root] aws_route_table.app-vpc-r-public (expand)" [label = "aws_route_table.app-vpc-r-public", shape = "box"]
+		"[root] aws_route_table_association.app-vpc-rta-private (expand)" [label = "aws_route_table_association.app-vpc-rta-private", shape = "box"]
+		"[root] aws_route_table_association.app-vpc-rta-public (expand)" [label = "aws_route_table_association.app-vpc-rta-public", shape = "box"]
+		"[root] aws_s3_bucket.aws-s3-bucket (expand)" [label = "aws_s3_bucket.aws-s3-bucket", shape = "box"]
+		"[root] aws_s3_bucket_policy.aws-s3-bucket-policy (expand)" [label = "aws_s3_bucket_policy.aws-s3-bucket-policy", shape = "box"]
+		"[root] aws_s3_bucket_public_access_block.aws-s3-bucket (expand)" [label = "aws_s3_bucket_public_access_block.aws-s3-bucket", shape = "box"]
+		"[root] aws_s3_bucket_server_side_encryption_configuration.aws-s3-bucket (expand)" [label = "aws_s3_bucket_server_side_encryption_configuration.aws-s3-bucket", shape = "box"]
+		"[root] aws_s3_bucket_website_configuration.aws-s3-bucket-website (expand)" [label = "aws_s3_bucket_website_configuration.aws-s3-bucket-website", shape = "box"]
+		"[root] aws_s3_object.default (expand)" [label = "aws_s3_object.default", shape = "box"]
+		"[root] aws_secretsmanager_secret.sm-secret (expand)" [label = "aws_secretsmanager_secret.sm-secret", shape = "box"]
+		"[root] aws_secretsmanager_secret_policy.sm-policy (expand)" [label = "aws_secretsmanager_secret_policy.sm-policy", shape = "box"]
+		"[root] aws_secretsmanager_secret_rotation.sm-rotation (expand)" [label = "aws_secretsmanager_secret_rotation.sm-rotation", shape = "box"]
+		"[root] aws_secretsmanager_secret_version.sm-v (expand)" [label = "aws_secretsmanager_secret_version.sm-v", shape = "box"]
+		"[root] aws_security_group.app-vpc-ec2-sg (expand)" [label = "aws_security_group.app-vpc-ec2-sg", shape = "box"]
+		"[root] aws_subnet.app-vpc-private-subnet (expand)" [label = "aws_subnet.app-vpc-private-subnet", shape = "box"]
+		"[root] aws_subnet.app-vpc-public-subnet (expand)" [label = "aws_subnet.app-vpc-public-subnet", shape = "box"]
+		"[root] aws_vpc.app-vpc (expand)" [label = "aws_vpc.app-vpc", shape = "box"]
+		"[root] data.archive_file.lambda (expand)" [label = "data.archive_file.lambda", shape = "box"]
+		"[root] data.aws_ami.app-ec2-ami (expand)" [label = "data.aws_ami.app-ec2-ami", shape = "box"]
+		"[root] data.aws_availability_zones.azs (expand)" [label = "data.aws_availability_zones.azs", shape = "box"]
+		"[root] data.aws_iam_policy.default (expand)" [label = "data.aws_iam_policy.default", shape = "box"]
+		"[root] data.aws_iam_policy_document.asuume-role (expand)" [label = "data.aws_iam_policy_document.asuume-role", shape = "box"]
+		"[root] data.aws_iam_policy_document.codepipeline (expand)" [label = "data.aws_iam_policy_document.codepipeline", shape = "box"]
+		"[root] data.aws_iam_policy_document.codepipeline_policy (expand)" [label = "data.aws_iam_policy_document.codepipeline_policy", shape = "box"]
+		"[root] data.aws_iam_policy_document.sm-policy (expand)" [label = "data.aws_iam_policy_document.sm-policy", shape = "box"]
+		"[root] data.aws_kms_alias.s3kmskey (expand)" [label = "data.aws_kms_alias.s3kmskey", shape = "box"]
+		"[root] data.tls_certificate.eks-certs (expand)" [label = "data.tls_certificate.eks-certs", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/archive\"]" [label = "provider[\"registry.terraform.io/hashicorp/archive\"]", shape = "diamond"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] provider[\"registry.terraform.io/hashicorp/tls\"]" [label = "provider[\"registry.terraform.io/hashicorp/tls\"]", shape = "diamond"]
+		"[root] var.EC2KeyName" [label = "var.EC2KeyName", shape = "note"]
+		"[root] var.FullRepositoryID" [label = "var.FullRepositoryID", shape = "note"]
+		"[root] var.Global_CIDR" [label = "var.Global_CIDR", shape = "note"]
+		"[root] var.app-vpc" [label = "var.app-vpc", shape = "note"]
+		"[root] var.aws-s3-bucket" [label = "var.aws-s3-bucket", shape = "note"]
+		"[root] var.aws_elastic_beanstalk_application" [label = "var.aws_elastic_beanstalk_application", shape = "note"]
+		"[root] var.azs" [label = "var.azs", shape = "note"]
+		"[root] var.cluster_name" [label = "var.cluster_name", shape = "note"]
+		"[root] var.db_password" [label = "var.db_password", shape = "note"]
+		"[root] var.db_username" [label = "var.db_username", shape = "note"]
+		"[root] var.desired_size" [label = "var.desired_size", shape = "note"]
+		"[root] var.instance_type" [label = "var.instance_type", shape = "note"]
+		"[root] var.max_size" [label = "var.max_size", shape = "note"]
+		"[root] var.min_size" [label = "var.min_size", shape = "note"]
+		"[root] var.node_group_name" [label = "var.node_group_name", shape = "note"]
+		"[root] var.port" [label = "var.port", shape = "note"]
+		"[root] var.pracx" [label = "var.pracx", shape = "note"]
+		"[root] var.protocol" [label = "var.protocol", shape = "note"]
+		"[root] var.region" [label = "var.region", shape = "note"]
+		"[root] var.retention_in_days" [label = "var.retention_in_days", shape = "note"]
+		"[root] var.storage" [label = "var.storage", shape = "note"]
+		"[root] aws_api_gateway_integration.lambda_integration (expand)" -> "[root] aws_api_gateway_method.app_method (expand)"
+		"[root] aws_api_gateway_integration.lambda_integration (expand)" -> "[root] aws_lambda_permission.api_gateway_invoke (expand)"
+		"[root] aws_api_gateway_method.app_method (expand)" -> "[root] aws_api_gateway_resource.app_resource (expand)"
+		"[root] aws_api_gateway_resource.app_resource (expand)" -> "[root] aws_api_gateway_rest_api.app-api (expand)"
+		"[root] aws_api_gateway_rest_api.app-api (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_autoscaling_group.aws-ec2-asg (expand)" -> "[root] aws_launch_template.aws-ec2-lt (expand)"
+		"[root] aws_autoscaling_group.aws-ec2-asg (expand)" -> "[root] aws_subnet.app-vpc-public-subnet (expand)"
+		"[root] aws_autoscaling_group.aws-ec2-asg (expand)" -> "[root] var.desired_size"
+		"[root] aws_autoscaling_group.aws-ec2-asg (expand)" -> "[root] var.max_size"
+		"[root] aws_autoscaling_group.aws-ec2-asg (expand)" -> "[root] var.min_size"
+		"[root] aws_autoscaling_policy.AWS-EC2-Scale-Down (expand)" -> "[root] aws_autoscaling_group.aws-ec2-asg (expand)"
+		"[root] aws_autoscaling_policy.AWS-EC2-Scale-UP (expand)" -> "[root] aws_autoscaling_group.aws-ec2-asg (expand)"
+		"[root] aws_cloudfront_distribution.cdn (expand)" -> "[root] aws_cloudfront_origin_access_identity.oai (expand)"
+		"[root] aws_cloudfront_distribution.cdn (expand)" -> "[root] aws_s3_bucket.aws-s3-bucket (expand)"
+		"[root] aws_cloudfront_origin_access_identity.oai (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_cloudwatch_log_group.my-cluster (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_cloudwatch_log_group.my-cluster (expand)" -> "[root] var.cluster_name"
+		"[root] aws_cloudwatch_log_group.my-cluster (expand)" -> "[root] var.retention_in_days"
+		"[root] aws_codepipeline.app-codepipeline (expand)" -> "[root] aws_codestarconnections_connection.app-codestar (expand)"
+		"[root] aws_codepipeline.app-codepipeline (expand)" -> "[root] aws_iam_role.codepipeline-role (expand)"
+		"[root] aws_codepipeline.app-codepipeline (expand)" -> "[root] aws_s3_bucket.aws-s3-bucket (expand)"
+		"[root] aws_codepipeline.app-codepipeline (expand)" -> "[root] data.aws_kms_alias.s3kmskey (expand)"
+		"[root] aws_codepipeline.app-codepipeline (expand)" -> "[root] var.FullRepositoryID"
+		"[root] aws_codestarconnections_connection.app-codestar (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_db_instance.app-db (expand)" -> "[root] aws_iam_role.rds-monitoring-role (expand)"
+		"[root] aws_db_instance.app-db (expand)" -> "[root] aws_secretsmanager_secret_version.sm-v (expand)"
+		"[root] aws_db_instance.app-db (expand)" -> "[root] aws_security_group.app-vpc-ec2-sg (expand)"
+		"[root] aws_db_instance.app-db (expand)" -> "[root] var.storage"
+		"[root] aws_db_subnet_group.app-db-sbg-g (expand)" -> "[root] aws_subnet.app-vpc-private-subnet (expand)"
+		"[root] aws_dynamodb_table.app-table (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_eip.app-vpc-eip (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_eip.app-vpc-eip (expand)" -> "[root] var.app-vpc"
+		"[root] aws_eks_cluster.aws-cluster (expand)" -> "[root] aws_cloudwatch_log_group.my-cluster (expand)"
+		"[root] aws_eks_cluster.aws-cluster (expand)" -> "[root] aws_iam_role_policy_attachment.my-cluster-awseksp (expand)"
+		"[root] aws_eks_cluster.aws-cluster (expand)" -> "[root] aws_iam_role_policy_attachment.my-cluster-awseksvpcrcp (expand)"
+		"[root] aws_eks_cluster.aws-cluster (expand)" -> "[root] aws_security_group.app-vpc-ec2-sg (expand)"
+		"[root] aws_eks_cluster.aws-cluster (expand)" -> "[root] aws_subnet.app-vpc-private-subnet (expand)"
+		"[root] aws_eks_node_group.aws-cluster-node-group (expand)" -> "[root] aws_eks_cluster.aws-cluster (expand)"
+		"[root] aws_eks_node_group.aws-cluster-node-group (expand)" -> "[root] aws_iam_instance_profile.ssm-role (expand)"
+		"[root] aws_eks_node_group.aws-cluster-node-group (expand)" -> "[root] var.desired_size"
+		"[root] aws_eks_node_group.aws-cluster-node-group (expand)" -> "[root] var.instance_type"
+		"[root] aws_eks_node_group.aws-cluster-node-group (expand)" -> "[root] var.max_size"
+		"[root] aws_eks_node_group.aws-cluster-node-group (expand)" -> "[root] var.min_size"
+		"[root] aws_eks_node_group.aws-cluster-node-group (expand)" -> "[root] var.node_group_name"
+		"[root] aws_eks_node_group.aws-cluster-node-group (expand)" -> "[root] var.pracx"
+		"[root] aws_elastic_beanstalk_application.app (expand)" -> "[root] aws_iam_role.ssm-role (expand)"
+		"[root] aws_elastic_beanstalk_application.app (expand)" -> "[root] var.aws_elastic_beanstalk_application"
+		"[root] aws_elastic_beanstalk_application_version.app-version (expand)" -> "[root] aws_s3_object.default (expand)"
+		"[root] aws_elastic_beanstalk_configuration_template.app-template (expand)" -> "[root] aws_elastic_beanstalk_application.app (expand)"
+		"[root] aws_elastic_beanstalk_environment.app-env (expand)" -> "[root] aws_elastic_beanstalk_application.app (expand)"
+		"[root] aws_elastic_beanstalk_environment.app-env (expand)" -> "[root] aws_iam_instance_profile.ssm-role (expand)"
+		"[root] aws_elastic_beanstalk_environment.app-env (expand)" -> "[root] aws_subnet.app-vpc-private-subnet (expand)"
+		"[root] aws_elastic_beanstalk_environment.app-env (expand)" -> "[root] aws_subnet.app-vpc-public-subnet (expand)"
+		"[root] aws_elastic_beanstalk_environment.app-env (expand)" -> "[root] var.EC2KeyName"
+		"[root] aws_elastic_beanstalk_environment.app-env (expand)" -> "[root] var.instance_type"
+		"[root] aws_iam_instance_profile.ssm-role (expand)" -> "[root] aws_iam_role.ssm-role (expand)"
+		"[root] aws_iam_openid_connect_provider.eks-cluster (expand)" -> "[root] data.tls_certificate.eks-certs (expand)"
+		"[root] aws_iam_policy.lambda-dynamodb-policy (expand)" -> "[root] aws_dynamodb_table.app-table (expand)"
+		"[root] aws_iam_policy.rds_monitoring_policy (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_iam_role.aws-cluster-role (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_iam_role.aws-lambda-role (expand)" -> "[root] data.aws_iam_policy_document.asuume-role (expand)"
+		"[root] aws_iam_role.codepipeline-role (expand)" -> "[root] data.aws_iam_policy_document.codepipeline (expand)"
+		"[root] aws_iam_role.rds-monitoring-role (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_iam_role.ssm-role (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_iam_role_policy.codepipeline_policy (expand)" -> "[root] aws_iam_role.codepipeline-role (expand)"
+		"[root] aws_iam_role_policy.codepipeline_policy (expand)" -> "[root] data.aws_iam_policy_document.codepipeline_policy (expand)"
+		"[root] aws_iam_role_policy_attachment.beanstalk_ec2_container (expand)" -> "[root] aws_iam_role.ssm-role (expand)"
+		"[root] aws_iam_role_policy_attachment.beanstalk_ec2_web (expand)" -> "[root] aws_iam_role.ssm-role (expand)"
+		"[root] aws_iam_role_policy_attachment.beanstalk_ec2_worker (expand)" -> "[root] aws_iam_role.ssm-role (expand)"
+		"[root] aws_iam_role_policy_attachment.beanstalk_service (expand)" -> "[root] aws_iam_role.ssm-role (expand)"
+		"[root] aws_iam_role_policy_attachment.beanstalk_service_health (expand)" -> "[root] aws_iam_role.ssm-role (expand)"
+		"[root] aws_iam_role_policy_attachment.cloudwatch_admin_policy (expand)" -> "[root] aws_iam_role.ssm-role (expand)"
+		"[root] aws_iam_role_policy_attachment.cloudwatch_server_role_policy_attachment (expand)" -> "[root] aws_iam_role.ssm-role (expand)"
+		"[root] aws_iam_role_policy_attachment.eks_cni_policy_attachment (expand)" -> "[root] aws_iam_role.ssm-role (expand)"
+		"[root] aws_iam_role_policy_attachment.eks_ec2_policy_attachment (expand)" -> "[root] aws_iam_role.ssm-role (expand)"
+		"[root] aws_iam_role_policy_attachment.eks_worker_node_policy_attachment (expand)" -> "[root] aws_iam_role.ssm-role (expand)"
+		"[root] aws_iam_role_policy_attachment.lambda_dynamodb_policy_attachment (expand)" -> "[root] aws_iam_policy.lambda-dynamodb-policy (expand)"
+		"[root] aws_iam_role_policy_attachment.lambda_dynamodb_policy_attachment (expand)" -> "[root] aws_iam_role.aws-lambda-role (expand)"
+		"[root] aws_iam_role_policy_attachment.my-cluster-awseksp (expand)" -> "[root] aws_iam_role.aws-cluster-role (expand)"
+		"[root] aws_iam_role_policy_attachment.my-cluster-awseksvpcrcp (expand)" -> "[root] aws_iam_role.aws-cluster-role (expand)"
+		"[root] aws_iam_role_policy_attachment.name (expand)" -> "[root] aws_iam_role.ssm-role (expand)"
+		"[root] aws_iam_role_policy_attachment.name (expand)" -> "[root] data.aws_iam_policy.default (expand)"
+		"[root] aws_iam_role_policy_attachment.rds_monitoring_role_policy_attachment (expand)" -> "[root] aws_iam_policy.rds_monitoring_policy (expand)"
+		"[root] aws_iam_role_policy_attachment.rds_monitoring_role_policy_attachment (expand)" -> "[root] aws_iam_role.rds-monitoring-role (expand)"
+		"[root] aws_instance.web-ec2 (expand)" -> "[root] aws_iam_instance_profile.ssm-role (expand)"
+		"[root] aws_instance.web-ec2 (expand)" -> "[root] aws_security_group.app-vpc-ec2-sg (expand)"
+		"[root] aws_instance.web-ec2 (expand)" -> "[root] aws_subnet.app-vpc-public-subnet (expand)"
+		"[root] aws_instance.web-ec2 (expand)" -> "[root] data.aws_ami.app-ec2-ami (expand)"
+		"[root] aws_instance.web-ec2 (expand)" -> "[root] var.instance_type"
+		"[root] aws_instance.web-ec2 (expand)" -> "[root] var.storage"
+		"[root] aws_internet_gateway.app-vpc-ig (expand)" -> "[root] aws_vpc.app-vpc (expand)"
+		"[root] aws_lambda_function.lambda-function (expand)" -> "[root] aws_dynamodb_table.app-table (expand)"
+		"[root] aws_lambda_function.lambda-function (expand)" -> "[root] aws_iam_role.aws-lambda-role (expand)"
+		"[root] aws_lambda_function.lambda-function (expand)" -> "[root] aws_security_group.app-vpc-ec2-sg (expand)"
+		"[root] aws_lambda_function.lambda-function (expand)" -> "[root] aws_subnet.app-vpc-private-subnet (expand)"
+		"[root] aws_lambda_function.lambda-function (expand)" -> "[root] data.archive_file.lambda (expand)"
+		"[root] aws_lambda_permission.api_gateway_invoke (expand)" -> "[root] aws_api_gateway_rest_api.app-api (expand)"
+		"[root] aws_lambda_permission.api_gateway_invoke (expand)" -> "[root] aws_lambda_function.lambda-function (expand)"
+		"[root] aws_launch_configuration.name (expand)" -> "[root] data.aws_ami.app-ec2-ami (expand)"
+		"[root] aws_launch_configuration.name (expand)" -> "[root] var.instance_type"
+		"[root] aws_launch_template.aws-ec2-lt (expand)" -> "[root] data.aws_ami.app-ec2-ami (expand)"
+		"[root] aws_launch_template.aws-ec2-lt (expand)" -> "[root] var.instance_type"
+		"[root] aws_lb.app-alb (expand)" -> "[root] aws_security_group.app-vpc-ec2-sg (expand)"
+		"[root] aws_lb.app-alb (expand)" -> "[root] aws_subnet.app-vpc-public-subnet (expand)"
+		"[root] aws_lb_listener.app-lb-l (expand)" -> "[root] aws_lb.app-alb (expand)"
+		"[root] aws_lb_listener.app-lb-l (expand)" -> "[root] aws_lb_target_group.app-alb-tg (expand)"
+		"[root] aws_lb_target_group.app-alb-tg (expand)" -> "[root] aws_vpc.app-vpc (expand)"
+		"[root] aws_lb_target_group.app-alb-tg (expand)" -> "[root] var.port"
+		"[root] aws_lb_target_group.app-alb-tg (expand)" -> "[root] var.protocol"
+		"[root] aws_lb_target_group_attachment.app-alb-tg-a (expand)" -> "[root] aws_instance.web-ec2 (expand)"
+		"[root] aws_lb_target_group_attachment.app-alb-tg-a (expand)" -> "[root] aws_lb_target_group.app-alb-tg (expand)"
+		"[root] aws_nat_gateway.app-vpc-nat-gw (expand)" -> "[root] aws_eip.app-vpc-eip (expand)"
+		"[root] aws_nat_gateway.app-vpc-nat-gw (expand)" -> "[root] aws_subnet.app-vpc-public-subnet (expand)"
+		"[root] aws_route.app-vpc-route-private (expand)" -> "[root] aws_nat_gateway.app-vpc-nat-gw (expand)"
+		"[root] aws_route.app-vpc-route-private (expand)" -> "[root] aws_route_table.app-vpc-r-private (expand)"
+		"[root] aws_route.app-vpc-route-private (expand)" -> "[root] aws_subnet.app-vpc-private-subnet (expand)"
+		"[root] aws_route.app-vpc-route-public (expand)" -> "[root] aws_internet_gateway.app-vpc-ig (expand)"
+		"[root] aws_route.app-vpc-route-public (expand)" -> "[root] aws_route_table.app-vpc-r-public (expand)"
+		"[root] aws_route.app-vpc-route-public (expand)" -> "[root] var.Global_CIDR"
+		"[root] aws_route_table.app-vpc-r-private (expand)" -> "[root] aws_vpc.app-vpc (expand)"
+		"[root] aws_route_table.app-vpc-r-public (expand)" -> "[root] aws_vpc.app-vpc (expand)"
+		"[root] aws_route_table_association.app-vpc-rta-private (expand)" -> "[root] aws_route_table.app-vpc-r-private (expand)"
+		"[root] aws_route_table_association.app-vpc-rta-private (expand)" -> "[root] aws_subnet.app-vpc-private-subnet (expand)"
+		"[root] aws_route_table_association.app-vpc-rta-public (expand)" -> "[root] aws_route_table.app-vpc-r-public (expand)"
+		"[root] aws_route_table_association.app-vpc-rta-public (expand)" -> "[root] aws_subnet.app-vpc-public-subnet (expand)"
+		"[root] aws_s3_bucket.aws-s3-bucket (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_s3_bucket.aws-s3-bucket (expand)" -> "[root] var.aws-s3-bucket"
+		"[root] aws_s3_bucket_policy.aws-s3-bucket-policy (expand)" -> "[root] aws_s3_bucket.aws-s3-bucket (expand)"
+		"[root] aws_s3_bucket_public_access_block.aws-s3-bucket (expand)" -> "[root] aws_s3_bucket.aws-s3-bucket (expand)"
+		"[root] aws_s3_bucket_server_side_encryption_configuration.aws-s3-bucket (expand)" -> "[root] aws_s3_bucket.aws-s3-bucket (expand)"
+		"[root] aws_s3_bucket_website_configuration.aws-s3-bucket-website (expand)" -> "[root] aws_s3_bucket.aws-s3-bucket (expand)"
+		"[root] aws_s3_object.default (expand)" -> "[root] aws_s3_bucket.aws-s3-bucket (expand)"
+		"[root] aws_secretsmanager_secret.sm-secret (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_secretsmanager_secret_policy.sm-policy (expand)" -> "[root] aws_secretsmanager_secret.sm-secret (expand)"
+		"[root] aws_secretsmanager_secret_policy.sm-policy (expand)" -> "[root] data.aws_iam_policy_document.sm-policy (expand)"
+		"[root] aws_secretsmanager_secret_rotation.sm-rotation (expand)" -> "[root] aws_secretsmanager_secret.sm-secret (expand)"
+		"[root] aws_secretsmanager_secret_version.sm-v (expand)" -> "[root] aws_secretsmanager_secret.sm-secret (expand)"
+		"[root] aws_secretsmanager_secret_version.sm-v (expand)" -> "[root] var.db_password"
+		"[root] aws_secretsmanager_secret_version.sm-v (expand)" -> "[root] var.db_username"
+		"[root] aws_security_group.app-vpc-ec2-sg (expand)" -> "[root] aws_vpc.app-vpc (expand)"
+		"[root] aws_security_group.app-vpc-ec2-sg (expand)" -> "[root] local.ingress_rules (expand)"
+		"[root] aws_security_group.app-vpc-ec2-sg (expand)" -> "[root] var.Global_CIDR"
+		"[root] aws_subnet.app-vpc-private-subnet (expand)" -> "[root] aws_vpc.app-vpc (expand)"
+		"[root] aws_subnet.app-vpc-private-subnet (expand)" -> "[root] data.aws_availability_zones.azs (expand)"
+		"[root] aws_subnet.app-vpc-public-subnet (expand)" -> "[root] aws_vpc.app-vpc (expand)"
+		"[root] aws_subnet.app-vpc-public-subnet (expand)" -> "[root] data.aws_availability_zones.azs (expand)"
+		"[root] aws_vpc.app-vpc (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_vpc.app-vpc (expand)" -> "[root] var.app-vpc"
+		"[root] data.archive_file.lambda (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/archive\"]"
+		"[root] data.aws_ami.app-ec2-ami (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_availability_zones.azs (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_iam_policy.default (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_iam_policy_document.asuume-role (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_iam_policy_document.codepipeline (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_iam_policy_document.codepipeline_policy (expand)" -> "[root] aws_codestarconnections_connection.app-codestar (expand)"
+		"[root] data.aws_iam_policy_document.codepipeline_policy (expand)" -> "[root] aws_s3_bucket.aws-s3-bucket (expand)"
+		"[root] data.aws_iam_policy_document.sm-policy (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_kms_alias.s3kmskey (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.tls_certificate.eks-certs (expand)" -> "[root] aws_eks_cluster.aws-cluster (expand)"
+		"[root] data.tls_certificate.eks-certs (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/tls\"]"
+		"[root] output.arn (expand)" -> "[root] aws_elastic_beanstalk_application.app (expand)"
+		"[root] output.available_zones (expand)" -> "[root] data.aws_availability_zones.azs (expand)"
+		"[root] output.cloudfront_distribution_id (expand)" -> "[root] aws_cloudfront_distribution.cdn (expand)"
+		"[root] output.cloudfront_domain_name (expand)" -> "[root] aws_cloudfront_distribution.cdn (expand)"
+		"[root] output.default_kms_key_arn (expand)" -> "[root] data.aws_kms_alias.s3kmskey (expand)"
+		"[root] output.description (expand)" -> "[root] aws_elastic_beanstalk_application.app (expand)"
+		"[root] output.endpoint (expand)" -> "[root] aws_eks_cluster.aws-cluster (expand)"
+		"[root] output.kubeconfig-certificate-authority-data (expand)" -> "[root] aws_eks_cluster.aws-cluster (expand)"
+		"[root] output.node_group_name (expand)" -> "[root] aws_eks_node_group.aws-cluster-node-group (expand)"
+		"[root] output.node_group_role_arn (expand)" -> "[root] aws_iam_role.ssm-role (expand)"
+		"[root] output.s3_bucket_arn (expand)" -> "[root] aws_s3_bucket.aws-s3-bucket (expand)"
+		"[root] output.s3_bucket_id (expand)" -> "[root] aws_s3_bucket.aws-s3-bucket (expand)"
+		"[root] output.s3_bucket_name (expand)" -> "[root] aws_s3_bucket.aws-s3-bucket (expand)"
+		"[root] output.web-ec2-instance (expand)" -> "[root] aws_instance.web-ec2 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/archive\"] (close)" -> "[root] data.archive_file.lambda (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_api_gateway_integration.lambda_integration (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_autoscaling_policy.AWS-EC2-Scale-Down (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_autoscaling_policy.AWS-EC2-Scale-UP (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_cloudfront_distribution.cdn (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_codepipeline.app-codepipeline (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_db_instance.app-db (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_db_subnet_group.app-db-sbg-g (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_eks_node_group.aws-cluster-node-group (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_elastic_beanstalk_application_version.app-version (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_elastic_beanstalk_configuration_template.app-template (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_elastic_beanstalk_environment.app-env (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_iam_openid_connect_provider.eks-cluster (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_iam_role_policy.codepipeline_policy (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_iam_role_policy_attachment.beanstalk_ec2_container (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_iam_role_policy_attachment.beanstalk_ec2_web (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_iam_role_policy_attachment.beanstalk_ec2_worker (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_iam_role_policy_attachment.beanstalk_service (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_iam_role_policy_attachment.beanstalk_service_health (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_iam_role_policy_attachment.cloudwatch_admin_policy (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_iam_role_policy_attachment.cloudwatch_server_role_policy_attachment (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_iam_role_policy_attachment.eks_cni_policy_attachment (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_iam_role_policy_attachment.eks_ec2_policy_attachment (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_iam_role_policy_attachment.eks_worker_node_policy_attachment (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_iam_role_policy_attachment.lambda_dynamodb_policy_attachment (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_iam_role_policy_attachment.name (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_iam_role_policy_attachment.rds_monitoring_role_policy_attachment (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_launch_configuration.name (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_lb_listener.app-lb-l (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_lb_target_group_attachment.app-alb-tg-a (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route.app-vpc-route-private (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route.app-vpc-route-public (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route_table_association.app-vpc-rta-private (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route_table_association.app-vpc-rta-public (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_s3_bucket_policy.aws-s3-bucket-policy (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_s3_bucket_public_access_block.aws-s3-bucket (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_s3_bucket_server_side_encryption_configuration.aws-s3-bucket (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_s3_bucket_website_configuration.aws-s3-bucket-website (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_secretsmanager_secret_policy.sm-policy (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_secretsmanager_secret_rotation.sm-rotation (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/tls\"] (close)" -> "[root] data.tls_certificate.eks-certs (expand)"
+		"[root] root" -> "[root] output.arn (expand)"
+		"[root] root" -> "[root] output.available_zones (expand)"
+		"[root] root" -> "[root] output.cloudfront_distribution_id (expand)"
+		"[root] root" -> "[root] output.cloudfront_domain_name (expand)"
+		"[root] root" -> "[root] output.default_kms_key_arn (expand)"
+		"[root] root" -> "[root] output.description (expand)"
+		"[root] root" -> "[root] output.endpoint (expand)"
+		"[root] root" -> "[root] output.kubeconfig-certificate-authority-data (expand)"
+		"[root] root" -> "[root] output.node_group_name (expand)"
+		"[root] root" -> "[root] output.node_group_role_arn (expand)"
+		"[root] root" -> "[root] output.s3_bucket_arn (expand)"
+		"[root] root" -> "[root] output.s3_bucket_id (expand)"
+		"[root] root" -> "[root] output.s3_bucket_name (expand)"
+		"[root] root" -> "[root] output.web-ec2-instance (expand)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/archive\"] (close)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/tls\"] (close)"
+		"[root] root" -> "[root] var.azs"
+		"[root] root" -> "[root] var.region"
+	}
+}
+

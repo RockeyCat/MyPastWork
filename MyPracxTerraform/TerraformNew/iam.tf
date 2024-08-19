@@ -7,7 +7,7 @@ resource "aws_iam_role" "ssm-role" {
     Version = "2012-10-17"
     Statement = [
       {
-        Action = "sts:AssumeRole"
+        Action = ["sts:AssumeRole"]
         Effect = "Allow"
         Sid    = ""
         Principal = {
@@ -17,6 +17,19 @@ resource "aws_iam_role" "ssm-role" {
     ]
   })
 
+}
+
+
+
+
+resource "aws_iam_role_policy_attachment" "cloudwatch_server_role_policy_attachment" {
+  role       = aws_iam_role.ssm-role.name
+  policy_arn = "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
+}
+
+resource "aws_iam_role_policy_attachment" "cloudwatch_admin_policy" {
+role = aws_iam_role.ssm-role.name
+policy_arn =  "arn:aws:iam::aws:policy/CloudWatchAgentAdminPolicy"  
 }
 
 data "aws_iam_policy" "default" {
@@ -248,4 +261,49 @@ resource "aws_iam_policy" "rds_monitoring_policy" {
 resource "aws_iam_role_policy_attachment" "rds_monitoring_role_policy_attachment" {
   role = aws_iam_role.rds-monitoring-role.name
   policy_arn = aws_iam_policy.rds_monitoring_policy.arn
+}
+
+
+data "aws_iam_policy_document" "asuume-role" {
+  statement {
+    effect = "Allow"
+
+    principals {
+      type = "Service"
+      identifiers = ["lambda.amazonaws.com"]
+    }
+    actions = ["sts:AssumeRole"]
+  }
+}
+
+
+resource "aws_iam_role" "aws-lambda-role" {
+  name = "lambda-role"
+  assume_role_policy = data.aws_iam_policy_document.asuume-role.json
+
+}
+
+resource "aws_iam_policy" "lambda-dynamodb-policy" {
+  name = "lambda-dynamodb-policy"
+  policy = jsonencode({
+    Version = "2012-10-17", 
+    Statement = [{
+      Action = [
+        "dynamodb:PutItem",
+        "dynamodb:GetItem", 
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem"
+      ], 
+      Effect = "Allow",
+      Resource = aws_dynamodb_table.app-table.arn,
+    }]
+
+  })
+}
+
+
+
+resource "aws_iam_role_policy_attachment" "lambda_dynamodb_policy_attachment" {
+  role       = aws_iam_role.aws-lambda-role.name
+  policy_arn = aws_iam_policy.lambda-dynamodb-policy.arn
 }
