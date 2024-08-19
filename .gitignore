@@ -65,4 +65,4 @@ lib*
 
 *.xml
 
-.*pdf
+.*pdf.terraform/
