@@ -27,7 +27,8 @@ terraform.rc
 *.tfstate.lock.info
 
 # Ignore the entire .terraform directory
-.terraform/
+**/.terraform/
+
 
 # Ignore all hidden files and folders except .gitignore
 .*
