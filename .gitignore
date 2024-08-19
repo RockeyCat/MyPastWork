@@ -56,3 +56,13 @@ terraform.rc
 .Ds_Store
 #Ignore txt files as well
 password.txt
+
+img*
+
+jenkinsfile
+
+lib*
+
+*.xml
+
+.*pdf

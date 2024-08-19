@@ -1,0 +1,11 @@
+17:26:40.384166 exec-cmd.c:139          trace: resolved executable path from Darwin stack: /Library/Developer/CommandLineTools/usr/bin/git
+17:26:40.384792 exec-cmd.c:238          trace: resolved executable dir: /Library/Developer/CommandLineTools/usr/bin
+17:26:40.385554 git.c:460               trace: built-in: git push -f origin DevOpsArch
+17:26:40.386778 run-command.c:655       trace: run_command: unset GIT_PREFIX; ssh git@github.com 'git-receive-pack '\''Himanshuuj1997/MyPastWork.git'\'''
+17:26:45.746791 run-command.c:655       trace: run_command: git pack-objects --all-progress-implied --revs --stdout --thin --delta-base-offset -q
+17:26:45.753207 exec-cmd.c:139          trace: resolved executable path from Darwin stack: /Library/Developer/CommandLineTools/usr/libexec/git-core/git
+17:26:45.753843 exec-cmd.c:238          trace: resolved executable dir: /Library/Developer/CommandLineTools/usr/libexec/git-core
+17:26:45.754621 git.c:460               trace: built-in: git pack-objects --all-progress-implied --revs --stdout --thin --delta-base-offset -q
+client_loop: send disconnect: Broken pipe
+send-pack: unexpected disconnect while reading sideband packet
+fatal: the remote end hung up unexpectedly
