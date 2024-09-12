@@ -1,0 +1,61 @@
+pipeline {
+    agent any
+
+    environment {
+        // Set up your environment variables, assuming AWS credentials and Git PAT are already configured in Jenkins
+        TF_VAR_AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
+        TF_VAR_AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+        GIT_PAT = credentials('GIT_PAT')
+    }
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                // Check out the code from your GitHub repository
+                git branch: 'DevOpsArch', url: 'https://github.com/Himanshuuj1997/MyPastWork.git'
+            }
+        }
+
+        stage('Build with Maven') {
+            steps {
+                // Run Maven commands
+                sh 'mvn clean install'
+            }
+        }
+
+        stage('Terraform Init') {
+            steps {
+                // Navigate to the directory containing your Terraform files
+                dir('/Users/HP/workrepo/MyPracxTerraform/TerraformNew/') {
+                    // Initialize Terraform
+                    sh 'terraform init'
+                }
+            }
+        }
+
+        stage('Terraform Validate') {
+            steps {
+                dir('/Users/HP/workrepo/MyPracxTerraform/TerraformNew/') {
+                    // Validate the Terraform configuration
+                    sh 'terraform validate'
+                }
+            }
+        }
+
+        stage('Terraform Plan') {
+            steps {
+                dir('/Users/HP/workrepo/MyPracxTerraform/TerraformNew/') {
+                    // Create an execution plan
+                    sh 'terraform plan'
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            // Clean up workspace after the build
+            cleanWs()
+        }
+    }
+}
